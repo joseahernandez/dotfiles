@@ -1,0 +1,78 @@
+[user]
+    name = Jose Hernandez 
+    email = josehernandz@gmail.com
+    signingkey = D7461A60F32EBFBA
+
+[core]
+    excludesfile = /Users/jose.hernandez/.gitignore_global
+    editor = vim
+    autocrlf = input
+    precomposeunicode = false
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+
+[fetch]
+    prune = true
+
+[push]
+    default = simple
+
+[help]
+    autocorrect = 1
+
+[diff]
+    tool = vimdiff
+    compactionHeuristic = true
+    indentHeuristic = true
+
+[color "diff"]
+    meta = yellow bold
+    commit = green bold
+    frag = cyan bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+
+[credentials]
+    helper = osxkeychain
+
+[pager]
+    diff = diff-so-fancy | less --tabs=4 -RFX
+    show = diff-so-fancy | less --tabs=4 -RFX
+    branch = false
+
+[commit]
+	gpgsign = true
+	template = /Users/jose.hernandez/.stCommitMsg
+
+[tag]
+	gpgsign = true
+
+[gpg]
+    program = gpg
+
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
