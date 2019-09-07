@@ -1,0 +1,13 @@
+{
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "all",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.openEditors.visible": 0,
+    "files.autoSave": "onFocusChange",
+    "search.useGlobalIgnoreFiles": true,
+    "terminal.external.osxExec": "iTerm.app",
+    "window.zoomLevel": 0,
+    "workbench.editor.highlightModifiedTabs": true
+}
