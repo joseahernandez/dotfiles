@@ -75,3 +75,5 @@
     co = checkout
     br = branch
     ci = commit
+    # Delete local branches that are merged into master or develop
+    cu = !git branch --merged | egrep -v \"(^\\*|master|develop)\" | xargs git branch -d
