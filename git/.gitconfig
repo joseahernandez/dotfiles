@@ -62,8 +62,7 @@
     branch = false
 
 [commit]
-	gpgsign = true
-	template = /Users/jose.hernandez/.stCommitMsg
+    gpgsign = true
 
 [tag]
     gpgsign = true
