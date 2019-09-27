@@ -8,7 +8,7 @@ mkdir -p $DOTFILES_PATH/backup
 # Install brew (https://brew.sh)
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew bundle --file=osx/brew/Brewfile
+brew bundle --file=macOS/brew/Brewfile
 
 # Remove bash last login
 touch $HOME/.hushlogin
@@ -20,14 +20,16 @@ killall gpg-agent
 
 # spectable
 mkdir -p $HOME/Library/Application\ Support/Spectacle
-ln -s -i $DOTFILES_PATH/osx/spectacle/Shortcuts.json $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
+ln -s -i $DOTFILES_PATH/macOS/spectacle/Shortcuts.json $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
 
 # ulimit
-sudo cp $DOTFILES_PATH/osx/plist/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
+sudo cp $DOTFILES_PATH/macOS/plist/limit.maxfiles.plist /Library/LaunchDaemons/limit.maxfiles.plist
 sudo chown root:wheel /Library/LaunchDaemons/limit.maxfiles.plist
+sudo chmod 644 /Library/LaunchDaemons/limit.maxfiles.plist
 sudo launchctl load -w /Library/LaunchDaemons/limit.maxfiles.plist
-sudo cp $DOTFILES_PATH/osx/plist/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist
+sudo cp $DOTFILES_PATH/macOS/plist/limit.maxproc.plist /Library/LaunchDaemons/limit.maxproc.plist
 sudo chown root:wheel /Library/LaunchDaemons/limit.maxproc.plist
+sudo chmod 644 /Library/LaunchDaemons/limit.maxproc.plist
 sudo launchctl load -w /Library/LaunchDaemons/limit.maxproc.plist
 
 # Git
