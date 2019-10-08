@@ -9,5 +9,7 @@
     "search.useGlobalIgnoreFiles": true,
     "terminal.external.osxExec": "iTerm.app",
     "window.zoomLevel": 0,
-    "workbench.editor.highlightModifiedTabs": true
+    "workbench.editor.highlightModifiedTabs": true,
+    "editor.fontFamily": "FiraCode-Retina",
+    "editor.fontLigatures": true
 }
