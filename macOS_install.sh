@@ -18,6 +18,9 @@ mkdir -p $HOME/.gnupg
 echo "pinentry-program /usr/local/bin/pinentry-mac" >> $HOME/.gnupg/gpg-agent.conf
 killall gpg-agent
 
+# Install Fonts
+cp $DOTFILES_PATH/fonts/*/*.ttf $HOME/Library/Fonts
+
 # spectable
 mkdir -p $HOME/Library/Application\ Support/Spectacle
 ln -s -i $DOTFILES_PATH/macOS/spectacle/Shortcuts.json $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
