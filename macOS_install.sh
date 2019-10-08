@@ -45,4 +45,4 @@ git clone https://github.com/udalov/kotlin-vim.git $HOME/.vim/pack/plugins/start
 
 # VS Code
 mkdir -p $HOME/Library/Application\ Support/Code/User
-ln -s -i $DOTFILES_PATH/editors/vs_code/settings $HOME/Library/Application\ Support/Code/User/settings.json
+ln -s -i $DOTFILES_PATH/editors/vs_code/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
