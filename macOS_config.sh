@@ -49,7 +49,6 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
-
 ###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################
@@ -90,6 +89,17 @@ defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
 # Remove the spring loading delay for directories
 defaults write NSGlobalDomain com.apple.springing.delay -float 0
+
+# Set default path when open new Finder window
+# Computer     : `PfCm`
+# Volume       : `PfVo`
+# $HOME        : `PfHm`
+# Desktop      : `PfDe`
+# Documents    : `PfDo`
+# All My Files : `PfAF`
+# Other…       : `PfLo`
+defaults write com.apple.finder NewWindowTarget -string 'PfHm'
+#defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 
 ###############################################################################
