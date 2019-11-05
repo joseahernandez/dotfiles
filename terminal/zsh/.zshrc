@@ -29,4 +29,9 @@ fpath=(/${ZDOTDIR:-${DOTFILES_PATH}}/terminal/zsh/theme $fpath)
 autoload -Uz promptinit && promptinit
 prompt hernandez
 
+# iTerm tab name
+precmd() {
+  echo -ne "\e]1;$(basename "$(pwd)")\a"
+}
+
 source $DOTFILES_PATH/terminal/zsh/key-bindings.zsh
