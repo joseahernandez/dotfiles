@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##? Updates dotfiles and attempts to do some setup
+#?? 1.0.0
+##?
+##? Usage:
+##?    update
+
+docs::eval_help "$@"
+
+self_update() {
+  cd "$DOTFILES_PATH" || exit
+
+  if [[ $(project_status) == "behind" ]]; then
+    log::note "Needs to pull!"
+    git pull && exit 0 || log::error "Failed"
+  fi
+}
+
+project_status() {
+  cd "$DOTFILES_PATH" || exit
+
+  local -r UPSTREAM="master"
+  local -r LOCAL=$(git rev-parse @)
+  local -r REMOTE=$(git rev-parse "$UPSTREAM")
+  local -r BASE=$(git merge-base @ "$UPSTREAM")
+
+  if [[ "$LOCAL" == "$REMOTE" ]]; then
+    echo "synced"
+  elif [[ "$LOCAL" == "$BASE" ]]; then
+    echo "behind"
+  elif [[ "$REMOTE" == "$BASE" ]]; then
+    echo "ahead"
+  else
+    echo "diverged"
+  fi
+}
+
+update_general_symlinks() {
+  ln -s -i "$DOTFILES_PATH/terminal/zsh/.zimrc" "$HOME/.zimrc"
+  ln -s -i "$DOTFILES_PATH/terminal/zsh/.zshrc" "$HOME/.zshrc"
+  ln -s -i "$DOTFILES_PATH/terminal/zsh/.zlogin" "$HOME/.zlogin"
+
+  # Git
+  ln -s -i "$DOTFILES_PATH/git/.gitconfig" "$HOME/.gitconfig"
+  ln -s -i "$DOTFILES_PATH/git/.gitignore_global" "$HOME/.gitignore_global"
+
+  # Vim
+  ln -s -i "$DOTFILES_PATH/editors/vim/.vimrc" "$HOME/.vimrc"
+}
+
+update_macos_symlinks() {
+  # ulimit
+  sudo cp "$DOTFILES_PATH/macOS/plist/limit.maxfiles.plist" /Library/LaunchDaemons/limit.maxfiles.plist
+  sudo chown root:wheel /Library/LaunchDaemons/limit.maxfiles.plist
+  sudo chmod 644 /Library/LaunchDaemons/limit.maxfiles.plist
+  sudo launchctl load -w /Library/LaunchDaemons/limit.maxfiles.plist
+  sudo cp "$DOTFILES_PATH/macOS/plist/limit.maxproc.plist" /Library/LaunchDaemons/limit.maxproc.plist
+  sudo chown root:wheel /Library/LaunchDaemons/limit.maxproc.plist
+  sudo chmod 644 /Library/LaunchDaemons/limit.maxproc.plist
+  sudo launchctl load -w /Library/LaunchDaemons/limit.maxproc.plist
+
+  # VS Code
+  mkdir -p "$HOME/Library/Application\ Support/Code/User"
+  ln -s -i "$DOTFILES_PATH/editors/vs_code/settings.json" "$HOME/Library/Application\ Support/Code/User/settings.json"
+
+  # Spectable
+  mkdir -p "$HOME/Library/Application\ Support/Spectacle"
+  ln -s -i "$DOTFILES_PATH/macOS/spectacle/Shortcuts.json" "$HOME/Library/Application\ Support/Spectacle/Shortcuts.json"
+}
+
+
+echo
+log::note "Updating dotfiles"
+self_update
+
+echo
+log::note "Applying general symbolic links 🔗"
+update_general_symlinks
+
+echo
+log::note "Applying macOS  symbolic links 🔗"
+update_macos_symlinks

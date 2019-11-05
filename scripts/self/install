@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##? Install the dotfiles
+#?? 1.0.0
+##?
+##? Usage:
+##?    install
+
+docs::eval_help "$@"
+
+mkdir -p "$DOTFILES_PATH/backup"
+
+# Install brew (https://brew.sh)
+echo
+log::note "Installing brew 🍺"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Install framework zimfw for zsh
+echo
+log::note "Installing zimfw 💻"
+git clone --recursive https://github.com/zimfw/zimfw.git "${ZDOTDIR:-${HOME}}/.zim"
+
+# Remove bash last login
+touch "$HOME/.hushlogin"
+
+echo
+log::note "Installing macOS apps "
+brew bundle --file="$DOTFILES_PATH/macOS/brew/Brewfile"
+
+"$DOTFILES_PATH/bin/dot" self update
+
+# Correct paths (so, we handle all with $PATH)
+sudo cp /etc/paths "$DOTFILES_PATH/backup/paths"
+sudo truncate -s 0 /etc/paths
+
+# Fix error signing commits
+mkdir -p "$HOME/.gnupg"
+echo "pinentry-program /usr/local/bin/pinentry-mac" >> "$HOME/.gnupg/gpg-agent.conf"
+killall gpg-agent
+
+echo
+log::note "Installing fonts ✍️"
+# Install Fonts
+cp "$DOTFILES_PATH"/fonts/*/*.ttf "$HOME/Library/Fonts"
+
+# Install Powerline fonts
+git clone https://github.com/powerline/fonts.git --depth=1 powerline_fonts
+cd powerline_fonts
+./install.sh
+cd ..
+rm -rf powerline_fonts
+
+echo
+log::note "Setting ZSH as the default shell 💻 "
+chsh -s "$(command -v zsh)"
+
+echo
+log::warning "Remember to run 'dot shell optimize'"
+
+echo
+log::success "Instalation success 🤘"
