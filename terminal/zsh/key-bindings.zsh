@@ -32,3 +32,11 @@ fzf-redraw-prompt() {
   zle reset-prompt
 }
 zle -N fzf-redraw-prompt
+
+
+# function expand-alias() {
+#     zle _expand_alias
+#     zle self-insert
+# }
+# zle -N expand-alias
+# bindkey -M main ' ' expand-alias

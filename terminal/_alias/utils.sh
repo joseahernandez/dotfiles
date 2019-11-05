@@ -15,3 +15,15 @@ is_port_used() {
 
   lsof -Pi :$1
 }
+
+
+cdw() { 
+  local v
+  local root="$HOME/workspace";
+  if [ "$#" -ne 1 ]; then
+    v="$(ls "$root" | fzf)"
+  else
+    v="$(ls "$root" | fzf --filter="$*" | head -n1)"
+  fi
+  cd "${root}/${v}" 
+}
