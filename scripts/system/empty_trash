@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+source "$DOTFILES_PATH/scripts/core/_main.sh"
+
+##? Empty the trash and remove cache files
+#?? 1.0.0
+##?
+##? Usage:
+##?    empty_trash
+
+docs::eval_zsh "$0" "$@"
+
 sudo rm -rfv /Volumes/*/.Trashes
 echo '[x] Volumes trash empty'
 
@@ -17,5 +29,8 @@ brew cleanup
 brew cleanup --prune-prefix
 echo '[x] Brew cache cleared'
 
+rm -rf ~/.zcompdump
+source "${ZDOTDIR:-${HOME}}"/.zlogin
+echo '[x] Compinit cleared'
 
-echo 'Done!'
+echo 'Done! 👍'
