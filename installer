@@ -4,15 +4,14 @@ set -euo pipefail
 
 DOTFILES_PATH=$HOME/.dotfiles
 
-#Folder for backup
-mkdir -p "$DOTFILES_PATH/backup"
-
 echo "⚙️  Dotfiles"
 echo "-------------"
 echo
 echo "Dotfiles is going to be installed in $DOTFILES_PATH"
 
-
 git clone --depth 1 git@github.com:joseahernandez/dotfiles.git "$DOTFILES_PATH"
+
+#Folder for backup
+mkdir -p "$DOTFILES_PATH/backup"
 
 "$DOTFILES_PATH/bin/dot" self install
