@@ -40,7 +40,7 @@ sudo truncate -s 0 /etc/paths
 # Fix error signing commits
 mkdir -p "$HOME/.gnupg"
 echo "pinentry-program /usr/local/bin/pinentry-mac" >> "$HOME/.gnupg/gpg-agent.conf"
-killall gpg-agent
+killall gpg-agent || true
 
 echo
 log::note "Installing fonts ✍️"
