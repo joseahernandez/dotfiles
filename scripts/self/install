@@ -59,7 +59,7 @@ log::note "Setting ZSH as the default shell 💻 "
 chsh -s "$(command -v zsh)"
 
 echo
-log::warning "Remember to run 'dot shell optimize'"
+log::warning "Remember to run 'dot shell zsh optimize'"
 
 echo
 log::success "Instalation success 🤘"
