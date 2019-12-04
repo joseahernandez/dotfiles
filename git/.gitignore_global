@@ -13,3 +13,8 @@
 .Spotlight-V100
 .Trashes
 Thumbs.db
+
+
+# VS Code
+####################
+*.code-workspace
