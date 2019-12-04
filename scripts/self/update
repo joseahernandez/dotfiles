@@ -65,12 +65,12 @@ update_macos_symlinks() {
   sudo launchctl load -w /Library/LaunchDaemons/limit.maxproc.plist
 
   # VS Code
-  mkdir -p "$HOME/Library/Application\ Support/Code/User"
-  ln -s -i "$DOTFILES_PATH/editors/vs_code/settings.json" "$HOME/Library/Application\ Support/Code/User/settings.json"
+  mkdir -p "$HOME/Library/Application Support/Code/User"
+  ln -s -i "$DOTFILES_PATH/editors/vs_code/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 
   # Spectable
-  mkdir -p "$HOME/Library/Application\ Support/Spectacle"
-  ln -s -i "$DOTFILES_PATH/macOS/spectacle/Shortcuts.json" "$HOME/Library/Application\ Support/Spectacle/Shortcuts.json"
+  mkdir -p "$HOME/Library/Application Support/Spectacle"
+  ln -s -i "$DOTFILES_PATH/macOS/spectacle/Shortcuts.json" "$HOME/Library/Application Support/Spectacle/Shortcuts.json"
 }
 
 
