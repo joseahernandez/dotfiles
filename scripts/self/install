@@ -38,7 +38,7 @@ sudo cp /etc/paths "$DOTFILES_PATH/backup/paths"
 sudo truncate -s 0 /etc/paths
 
 # Fix error signing commits
-mkdir -p "$HOME/.gnupg"
+gpg-agent --daemon || true
 echo "pinentry-program /usr/local/bin/pinentry-mac" >> "$HOME/.gnupg/gpg-agent.conf"
 killall gpg-agent || true
 
