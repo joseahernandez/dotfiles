@@ -10,7 +10,7 @@ source "$DOTFILES_PATH/scripts/core/_main.sh"
 ##? Usage:
 ##?    uuid_code
 
-docs::eval "$@"
+docs::eval_help "$@"
 
 uuid=$(uuidgen | tr '[:upper:]' '[:lower:]')
 echo -n $uuid | pbcopy
