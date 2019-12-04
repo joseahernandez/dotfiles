@@ -1,5 +1,6 @@
 tap "homebrew/cask-versions"
 tap "adoptopenjdk/openjdk"
+tap "denisidoro/tools"
 
 cask "adoptopenjdk/openjdk/adoptopenjdk8"
 cask "adoptopenjdk/openjdk/adoptopenjdk11"
