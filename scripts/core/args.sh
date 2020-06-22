@@ -4,7 +4,7 @@ set -euo pipefail
 
 args::total_is() {
   total_expected="${1}"
-  arguments="${*:2}"
+  arguments="${@:2}"
 
   total_arguments=0
   for argument in ${arguments[*]}; do

@@ -10,6 +10,6 @@ source "$DOTFILES_PATH/scripts/core/_main.sh"
 ##? Usage:
 ##?    private_ip
 
-docs::eval_help "$@"
+docs::eval "$@"
 
 ipconfig getifaddr en0
