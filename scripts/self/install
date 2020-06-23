@@ -12,8 +12,6 @@ source "$DOTFILES_PATH/scripts/core/_main.sh"
 
 docs::eval_help "$@"
 
-mkdir -p "$DOTFILES_PATH/backup"
-
 # Install brew (https://brew.sh)
 echo
 log::note "Installing brew 🍺"
@@ -34,8 +32,8 @@ brew bundle --file="$DOTFILES_PATH/macOS/brew/Brewfile"
 "$DOTFILES_PATH/bin/dot" self update
 
 # Correct paths (so, we handle all with $PATH)
-sudo cp /etc/paths "$DOTFILES_PATH/backup/paths"
-sudo truncate -s 0 /etc/paths
+#sudo cp /etc/paths "$DOTFILES_PATH/backup/paths"
+#sudo truncate -s 0 /etc/paths
 
 # Fix error signing commits
 gpg-agent --daemon || true

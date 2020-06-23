@@ -40,6 +40,15 @@ project_status() {
   fi
 }
 
+update_zim() {
+  cd "$DOTFILES_PATH" || exit
+
+  zsh "$ZIM_HOME/zimfw.zsh" upgrade
+  rm -rf "$ZIM_HOME/modules/"* && zsh "$ZIM_HOME/zimfw.zsh" install
+
+  git submodule foreach git reset --hard
+}
+
 update_general_symlinks() {
   ln -s -i "$DOTFILES_PATH/terminal/zsh/.zimrc" "$HOME/.zimrc"
   ln -s -i "$DOTFILES_PATH/terminal/zsh/.zshrc" "$HOME/.zshrc"
@@ -68,7 +77,7 @@ update_macos_symlinks() {
   mkdir -p "$HOME/Library/Application Support/Code/User"
   ln -s -i "$DOTFILES_PATH/editors/vs_code/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 
-  # Spectable
+  # Spectacle
   mkdir -p "$HOME/Library/Application Support/Spectacle"
   ln -s -i "$DOTFILES_PATH/macOS/spectacle/Shortcuts.json" "$HOME/Library/Application Support/Spectacle/Shortcuts.json"
 }
@@ -77,6 +86,10 @@ update_macos_symlinks() {
 echo
 log::note "Updating dotfiles"
 self_update
+
+echo
+log::note "Updating Zim"
+update_zim
 
 echo
 log::note "Applying general symbolic links 🔗"
