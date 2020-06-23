@@ -1,3 +1,5 @@
+#zmodload zsh/zprof
+
 setopt PROMPT_SUBST
 
 #
@@ -35,3 +37,5 @@ precmd() {
 }
 
 source $DOTFILES_PATH/terminal/zsh/key-bindings.zsh
+
+#zprof
