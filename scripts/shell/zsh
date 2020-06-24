@@ -21,7 +21,9 @@ case $1 in
   for i in $(seq 1 10); do /usr/bin/time /bin/zsh -i -c exit; done
   ;;
 "reload_completions")
-  /bin/zsh -c "autoload -U compaudit && compinit"
+  echo "Now execute (copied to your clipboard):"
+  echo "autoload -U compaudit && autoload -Uz compinit && compinit"
+  echo -n "autoload -U compaudit && autoload -Uz compinit && compinit" | pbcopy
   ;;
 *)
   docs::eval_help --help
