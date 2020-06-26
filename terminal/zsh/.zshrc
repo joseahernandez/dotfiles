@@ -11,7 +11,7 @@ export DOTFILES_PATH=$HOME/.dotfiles
 export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
 # Start zim
-[[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
+source ${ZIM_HOME}/init.zsh
 
 # Removing the waiting dots from completion (...). Original: ~/.zim/modules/input/init.zsh
 expand-or-complete-with-redisplay() {
