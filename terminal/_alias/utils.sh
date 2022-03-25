@@ -5,6 +5,8 @@ alias aux='ps uax'
 alias k='kill -9'
 
 alias x=extract
+alias kubectl="kubecolor"
+
 
 is_port_used() {
   if [[ $# -ne 1 ]]; then

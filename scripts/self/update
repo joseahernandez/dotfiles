@@ -60,6 +60,9 @@ update_general_symlinks() {
 
   # Vim
   ln -s -i "$DOTFILES_PATH/editors/vim/.vimrc" "$HOME/.vimrc"
+
+  # Karabiner-elements
+  ln -s -i "$DOTFILES_PATH/macOS/karabiner-elements/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
 }
 
 update_macos_symlinks() {

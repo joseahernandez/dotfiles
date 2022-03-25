@@ -32,3 +32,8 @@ fzf-redraw-prompt() {
   zle reset-prompt
 }
 zle -N fzf-redraw-prompt
+
+# Edit command line in editor using ctrl + e 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line

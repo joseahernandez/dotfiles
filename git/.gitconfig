@@ -1,5 +1,5 @@
 [user]
-    name = Jose Hernandez
+	name = Jose Hernández
     email = josehernandz@gmail.com
     signingkey = D7461A60F32EBFBA
 
@@ -77,3 +77,14 @@
     ci = commit
     # Delete local branches that are merged into master or develop
     cu = !git branch --merged | egrep -v \"(^\\*|master|develop)\" | xargs git branch -d
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
