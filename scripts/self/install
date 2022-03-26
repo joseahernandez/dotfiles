@@ -20,7 +20,8 @@ log::note "Installing brew 🍺"
 # Install framework zimfw for zsh
 echo
 log::note "Installing zimfw 💻"
-git clone --recursive https://github.com/zimfw/zimfw.git "${ZDOTDIR:-${HOME}}/.zim"
+curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+export ZIM_HOME="${ZDOTDIR:-${HOME}}/.zim"
 
 # Remove bash last login
 touch "$HOME/.hushlogin"
