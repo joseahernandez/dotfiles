@@ -11,4 +11,4 @@ for alias in ${DOTFILES_PATH}/terminal/_alias/*; do source ${alias}; done
 for export in ${DOTFILES_PATH}/terminal/_export/*; do source ${export}; done
 
 # Register function
-for function in ${DOTFILES_PATH}/terminal/_function*; do source ${function}; done
+for function in ${DOTFILES_PATH}/terminal/_function/*; do source ${function}; done
