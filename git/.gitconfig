@@ -8,6 +8,8 @@
     editor = vim
     autocrlf = input
     precomposeunicode = false
+    trustctime = false
+    ignorecase = false
 
 [color]
     diff = auto
@@ -20,6 +22,7 @@
 
 [push]
     default = simple
+    autoSetupRemote = true
 
 [help]
     autocorrect = 1
@@ -56,6 +59,10 @@
 [credentials]
     helper = osxkeychain
 
+[apply]
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
+
 [pager]
     diff = diff-so-fancy | less --tabs=4 -RFX
     show = diff-so-fancy | less --tabs=4 -RFX
@@ -75,5 +82,12 @@
     co = checkout
     br = branch
     ci = commit
+    df = diff
     # Delete local branches that are merged into master or develop
     cu = !git branch --merged | egrep -v \"(^\\*|master|develop)\" | xargs git branch -d
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
