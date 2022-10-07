@@ -1,6 +1,7 @@
 #zmodload zsh/zprof
 
 setopt PROMPT_SUBST
+setopt HIST_IGNORE_ALL_DUPS
 
 #
 # User configuration sourced by interactive shells
@@ -9,6 +10,9 @@ export DOTFILES_PATH=$HOME/.dotfiles
 
 # Define zim location
 export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_HIGHLIGHT_MAXLENGTH=300
 
 # Start zim
 [[ -s ${ZIM_HOME}/init.zsh ]] && source ${ZIM_HOME}/init.zsh
