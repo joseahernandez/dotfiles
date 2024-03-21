@@ -1,0 +1,60 @@
+{:profiles
+ {:Default
+  {:default true
+   :alone   20
+   :delay   200
+   :held    100
+   :sim     100}}
+ :applications
+ {;; To obtain the app ID: `grep -A1 "CFBundleIdentifier" /Applications/The.app/Contents/Info.plist`
+  :Chrome    ["com.google.Chrome"]
+  :IntelliJ  ["com.jetbrains.intellij"]
+  :VSCode    ["com.microsoft.VSCode"]}
+
+ :main
+ [
+  {:des   "[launch] iTerm"
+   :rules [[:!CTOspacebar "open -a 'iTerm.app'"]]}
+
+  {:des   "[launch] IntelliJ"
+   :rules [[:!CTOi "open -a 'IntelliJ IDEA Ultimate'"]]}
+
+  {:des   "[launch] Visual Studio Code"
+   :rules [[:!CTOc "open -a 'Visual Studio Code'"]]}
+
+  {:des   "Extend selection opt + ↑"
+    :rules [[:!Oup_arrow  [:!Oleft_arrow :!OSright_arrow] [:Chrome]]]}
+  ; :rules [[:!Oup_arrow {:modi :left_option :key :left_arrow}]]}
+
+  {:des   "[chrome] Show recent tabs"
+   :rules [:Chrome [:!Ce :!CSa]]}
+
+  {:des "[chrome] Open tab in a new window"
+   :rules [[:!Tn [:!Cl :!Cc :!Cw :!Cn :!Cv :return_or_enter] [:Chrome]]]}
+
+   {:des "[chrome] Zoom in"
+   :rules [[:!Cvolume_increment [:!Cequal_sign] [:Chrome]]]}
+
+{:des "[chrome] Zoom out"
+   :rules [[:!Cvolume_decrement [:!Chyphen] [:Chrome]]]}
+  ]
+
+ ;; ------------ Cheatsheet ------------
+ ;; ! stand for mandatory
+ ;; # stand for optional
+ ;; !! stand for mandatory command + control + option + shift (hyper)
+ ;; T O C S for left control option command shift
+ ;; Q W E R for right command control option shift
+ ;; F for fn
+ ;; need to prefix C T O S F Q W E R with ! or #
+ :cheatsheet
+ {:!Ca        "command a"
+  :!Ta        "control a"
+  :!Oa        "option a"
+  :!Sa        "shift a"
+  :#Sa        "shift a"
+  :!CTOa      "command control option a"
+  :!Cspacebar "command space"
+  :!Fa        "fn a"
+  :##a        "keycode a optional any"
+  :!!a        "mandatory hyper (control command option shift) a "}}
