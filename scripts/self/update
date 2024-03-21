@@ -41,12 +41,20 @@ project_status() {
 }
 
 update_zim() {
-  cd "$DOTFILES_PATH" || exit
-
-  zsh "$ZIM_HOME/zimfw.zsh" upgrade
-  rm -rf "$ZIM_HOME/modules/"* && zsh "$ZIM_HOME/zimfw.zsh" install
-
-  git submodule foreach git reset --hard
+  # Download zimfw plugin manager if missing.
+  if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+    if (( ${+commands[curl]} )); then
+      curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+          https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    else
+      mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+          https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    fi
+  fi
+  # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+  if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+    source ${ZIM_HOME}/zimfw.zsh init -q
+  fi
 }
 
 update_general_symlinks() {
@@ -80,6 +88,11 @@ update_macos_symlinks() {
   # Spectacle
   mkdir -p "$HOME/Library/Application Support/Spectacle"
   ln -s -i "$DOTFILES_PATH/macOS/spectacle/Shortcuts.json" "$HOME/Library/Application Support/Spectacle/Shortcuts.json"
+
+  # Karabiner
+  ln -s -i "$DOTFILES_PATH/macOS/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
+  ln -s -i "$DOTFILES_PATH/macOS/karabiner-goku/karabiner.edn" "$HOME/.config/karabiner.edn"
+  goku
 }
 
 

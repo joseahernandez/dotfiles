@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-DOTFILES_PATH=$HOME/.dotfiles
+export DOTFILES_PATH="$HOME/.dotfiles"
 
 echo "⚙️  Dotfiles"
 echo "-------------"

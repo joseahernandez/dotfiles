@@ -15,7 +15,11 @@ docs::eval_help "$@"
 # Install brew (https://brew.sh)
 echo
 log::note "Installing brew 🍺"
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/jose.hernandez/.zprofile
+echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/jose.hernandez/.zprofile
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install framework zimfw for zsh
 echo
