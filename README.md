@@ -9,7 +9,7 @@
 ## Update
 
 ```bash
-> dot self update
+> sdot self update
 ```
 
 ## References 📖
