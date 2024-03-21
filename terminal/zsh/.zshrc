@@ -11,6 +11,10 @@ export DOTFILES_PATH=$HOME/.dotfiles
 # Define zim location
 export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 
+# To use brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_HIGHLIGHT_MAXLENGTH=300
 
