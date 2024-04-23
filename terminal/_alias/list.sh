@@ -1,3 +1,3 @@
-alias ll='exa -l --icons'
-alias la='exa -la --icons'
-alias tree='exa -T'
+alias ll='eza -l --icons'
+alias la='eza -la --icons'
+alias tree='eza -T'
