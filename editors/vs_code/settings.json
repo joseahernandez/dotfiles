@@ -30,7 +30,7 @@
     "workbench.list.smoothScrolling": true,
     "workbench.productIconTheme": "fluent-icons",
     "workbench.iconTheme": "symbols",
-    "workbench.statusBar.visible": false,
+    "workbench.statusBar.visible": true,
     // Extensions
     "focus.opacity": "0.7",
     "focus.highlightRange": "block",
@@ -52,7 +52,7 @@
     "editor.fontLigatures": true,
     // end old
     "symbols.hidesExplorerArrows": false,
-    "workbench.activityBar.location": "hidden",
+    "workbench.activityBar.location": "default",
     "security.workspace.trust.untrustedFiles": "open",
     "workbench.colorTheme": "Default Dark+",
 }
