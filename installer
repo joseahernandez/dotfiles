@@ -11,4 +11,4 @@ echo "Dotfiles is going to be installed in $DOTFILES_PATH"
 
 git clone --depth 1 git@github.com:joseahernandez/dotfiles.git "$DOTFILES_PATH"
 
-"$DOTFILES_PATH/bin/dot" self install
+"$DOTFILES_PATH/bin/sdot" self install

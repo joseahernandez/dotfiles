@@ -85,14 +85,10 @@ update_macos_symlinks() {
   mkdir -p "$HOME/Library/Application Support/Code/User"
   ln -s -i "$DOTFILES_PATH/editors/vs_code/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
 
-  # Spectacle
-  mkdir -p "$HOME/Library/Application Support/Spectacle"
-  ln -s -i "$DOTFILES_PATH/macOS/spectacle/Shortcuts.json" "$HOME/Library/Application Support/Spectacle/Shortcuts.json"
-
   # Karabiner
+  mkdir -p "$HOME/.config/karabiner"
   ln -s -i "$DOTFILES_PATH/macOS/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
   ln -s -i "$DOTFILES_PATH/macOS/karabiner-goku/karabiner.edn" "$HOME/.config/karabiner.edn"
-  goku
 }
 
 
