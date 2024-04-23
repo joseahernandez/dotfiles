@@ -14,7 +14,6 @@ export ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
 # To use brew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_HIGHLIGHT_MAXLENGTH=300
 
@@ -47,3 +46,32 @@ precmd() {
 source $DOTFILES_PATH/terminal/zsh/key-bindings.zsh
 
 #zprof
+
+
+# autoload -U add-zsh-hook
+# load-nvmrc() {
+#   if typeset -f nvm_find_nvmrc > /dev/null; then
+#     echo "there is a foo function"
+#   else
+#     echo "Mp"
+#   fi
+
+#   local node_version="$(nvm version)"
+#   local nvmrc_path="$(nvm_find_nvmrc)"
+
+#   if [ -n "$nvmrc_path" ]; then
+#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#     echo "Required node version is $nvmrc_node_version"
+#     if [ "$nvmrc_node_version" != "$node_version" ]; then
+#       echo "Changin node version"
+#       nvm use
+#     fi
+#   fi
+# }
+# add-zsh-hook chpwd load-nvmrc
+
+eval "$(rbenv init - zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
